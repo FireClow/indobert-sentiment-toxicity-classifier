@@ -1,7 +1,7 @@
 import torch
 
-from app.preprocessing import preprocess_text
-from app.utils import PredictionResult, safe_float
+from preprocessing import preprocess_text
+from utils import PredictionResult, safe_float
 
 
 def predict_text(
