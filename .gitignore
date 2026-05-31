@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Training artifacts
+saved_model/model/*.pt
+saved_model/model/*.bin
+saved_model/tokenizer/*.json
+saved_model/tokenizer/*.txt
+saved_model/tokenizer/*.model
+saved_model/tokenizer/*.safetensors
+
+# Streamlit cache
+.streamlit/
+
+# OS
+.DS_Store
+Thumbs.db
