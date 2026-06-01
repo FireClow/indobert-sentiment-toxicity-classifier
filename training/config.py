@@ -8,7 +8,9 @@ class TrainConfig:
     output_model_dir: str = "saved_model/model"
     output_tokenizer_dir: str = "saved_model/tokenizer"
     max_length: int = 128
-    batch_size: int = 16
+    batch_size: int = 8
+    num_workers: int = 0
+    pin_memory: bool = False
     learning_rate: float = 2e-5
     weight_decay: float = 1e-2
     num_epochs: int = 4

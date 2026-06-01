@@ -8,7 +8,8 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from torch.utils.data import DataLoader
 
 from training.config import SENTIMENT_ID2LABEL, TOXICITY_ID2LABEL, TrainConfig
-from training.dataset_loader import MultitaskCommentDataset, load_and_prepare_dataframe, split_dataframe
+from training.data_prep import load_or_create_splits
+from training.dataset_loader import MultitaskCommentDataset
 from training.train import IndoBERTMultitaskModel
 from transformers import AutoTokenizer
 
@@ -57,8 +58,7 @@ def evaluate(config: TrainConfig):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     tokenizer = AutoTokenizer.from_pretrained(config.output_tokenizer_dir)
-    df = load_and_prepare_dataframe(config)
-    splits = split_dataframe(df, config)
+    splits = load_or_create_splits(config)
     test_dataset = MultitaskCommentDataset(splits.test_df, tokenizer, config.max_length)
     test_loader = DataLoader(test_dataset, batch_size=config.batch_size, shuffle=False)
 
