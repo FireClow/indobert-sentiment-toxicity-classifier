@@ -106,15 +106,33 @@ Features:
 
 ## 7) Deployment to Streamlit Cloud
 
-1. Push project to GitHub.
-2. In Streamlit Cloud, create app from repository.
-3. Set entrypoint: `app/main.py`.
-4. Ensure `requirements.txt` is present in repo root.
-5. Deploy.
+Model weights (`best_model.pt`, ~475 MB) are stored with **Git LFS** in this repo.
 
-Notes:
-- App supports CPU inference by default.
-- Model loading is cached using `@st.cache_resource`.
+1. Ensure Git LFS is installed locally (`git lfs install`).
+2. Push the repo (including LFS objects) to GitHub.
+3. Go to [share.streamlit.io](https://share.streamlit.io) → **Create app**.
+4. Repository: `FireClow/indobert-sentiment-toxicity-classifier`
+5. Branch: `main`
+6. Main file path: `app/main.py`
+7. Deploy (first build may take several minutes while LFS downloads the model).
+
+**Optional — Hugging Face Hub instead of Git LFS**
+
+```bash
+set HF_TOKEN=hf_...
+python scripts/push_model_to_hub.py --repo-id YOUR_USERNAME/indobert-sentiment-toxicity-multitask
+```
+
+In Streamlit Cloud → **Settings → Secrets**:
+
+```toml
+HF_MODEL_REPO = "YOUR_USERNAME/indobert-sentiment-toxicity-multitask"
+```
+
+**Notes**
+- App uses CPU inference on Streamlit Cloud.
+- Model loading is cached with `@st.cache_resource`.
+- Free tier has ~1 GB RAM; if the app crashes on startup, use a machine with more memory or the HF Hub option.
 
 ## 8) Architecture Overview
 

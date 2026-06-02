@@ -19,16 +19,14 @@ env/
 dataset/.prepared_dataframe.pkl
 dataset/.splits.pkl
 
-# Training artifacts
-saved_model/model/*.pt
+# Training artifacts — best_model.pt & tokenizer.json are tracked via Git LFS (.gitattributes)
 saved_model/model/*.bin
-saved_model/tokenizer/*.json
 saved_model/tokenizer/*.txt
 saved_model/tokenizer/*.model
 saved_model/tokenizer/*.safetensors
 
-# Streamlit cache
-.streamlit/
+# Streamlit secrets (never commit tokens)
+.streamlit/secrets.toml
 
 # Training logs
 training_log.txt
