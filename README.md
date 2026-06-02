@@ -48,6 +48,8 @@ python -m venv .venv
 # source .venv/bin/activate
 
 pip install -r requirements.txt
+# For local training/evaluation only:
+pip install -r requirements-train.txt
 ```
 
 ## 3) Dataset Preparation

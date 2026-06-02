@@ -1,0 +1,7 @@
+# Local training & evaluation (install after requirements.txt)
+-r requirements.txt
+
+scikit-learn>=1.4.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+tqdm>=4.66.0
