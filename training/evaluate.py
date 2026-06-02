@@ -1,3 +1,12 @@
+import os
+
+# Clear broken SSL cert paths that crash httpx/huggingface_hub on some Windows setups.
+# Must run before transformers/huggingface_hub create their HTTP client.
+os.environ.pop("SSL_CERT_FILE", None)
+os.environ.pop("REQUESTS_CA_BUNDLE", None)
+os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+os.environ.setdefault("TRANSFORMERS_NO_ADVISORY_WARNINGS", "1")
+
 from pathlib import Path
 
 import matplotlib.pyplot as plt
